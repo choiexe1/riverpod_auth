@@ -43,6 +43,7 @@ dependencies:
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
   dio: ^5.8.0+1
+  shadcn_ui: ^0.28.0
 
 dev_dependencies:
   flutter_test:

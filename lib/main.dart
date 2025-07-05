@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rpod_auth/features/auth/data/data_sources/remote/remote_auth_data_source.dart';
 import 'package:rpod_auth/injector.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   injection();
+
+  final authDataSource = sl<RemoteAuthDataSource>();
+
+  final credential = {
+    'username': 'emilys',
+    'password': 'emilyspass',
+    'expiresInMins': 30,
+  };
+
+  print(await authDataSource.login(credential));
+
   runApp(ProviderScope(child: const App()));
 }
 
@@ -13,11 +25,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-    );
+    return MaterialApp();
   }
 }
